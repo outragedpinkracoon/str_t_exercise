@@ -5,6 +5,7 @@ CFLAGS += -Wextra
 CFLAGS += -pedantic
 CFLAGS += -Werror
 CFLAGS += -I ./include -I ./tests/vendor/src
+CFLAGS += -DUNITY_OUTPUT_COLOR
 
 VFLAGS  = --quiet
 VFLAGS += --tool=memcheck
