@@ -5,8 +5,8 @@
 
 // Structure that will hold our string
 typedef struct str {
-  const char* ptr_;
-  size_t len_;
+  const char* ptr;
+  size_t len;
 } str_t;
 
 // A type for errors
