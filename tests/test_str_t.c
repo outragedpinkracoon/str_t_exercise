@@ -63,6 +63,20 @@ void test_str_move(void)
   str_free(&output);
 }
 
+void test_str_concat(void)
+{
+  str_t left;
+  str_t right;
+  str_new_from_zero_terminated(&left, "Banana");
+  str_new_from_zero_terminated(&right, "Apple");
+  str_t output = str_concat(&left, &right);
+  TEST_ASSERT_EQUAL_STRING("BananaApple", output.ptr);
+  TEST_ASSERT_EQUAL_UINT(11, output.len);
+  str_free(&left);
+  str_free(&right);
+  str_free(&output);
+}
+
 int main(void)
 {
    UnityBegin("tests/test_str_t.c");
@@ -72,6 +86,7 @@ int main(void)
    RUN_TEST(test_str_new_from_zero_terminated);
    RUN_TEST(test_str_copy);
    RUN_TEST(test_str_move);
+   RUN_TEST(test_str_concat);
 
    UnityEnd();
 
