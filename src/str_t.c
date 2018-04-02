@@ -10,38 +10,36 @@ const char *hello(void)
     return message;
 }
 
-str_t* str_new_from_raw_parts(const char* ptr, size_t len)
+void str_new_from_raw_parts(str_t *output, const char* ptr, size_t len)
 {
-    str_t *result = malloc(sizeof(str_t));
-    result->len = len;
-    result->ptr = ptr;
+    size_t buffer_size = len + 1;
 
-    return result;
+    char *buffer = malloc(buffer_size);
+
+    strncpy(buffer, ptr, buffer_size);
+
+    output->ptr = buffer;
+    output->len = len;
 }
 
 void str_free(str_t* p_str)
 {
-    free(p_str);
+    free((void *) p_str->ptr);
 }
 
-str_t* str_new_from_zero_terminated(const char* ptr)
+void str_new_from_zero_terminated(str_t *output, const char* ptr)
 {
     size_t length = strlen(ptr);
-    return str_new_from_raw_parts(ptr, length);
+    str_new_from_raw_parts(output, ptr, length);
 }
 
 void str_copy(const str_t *p_source, str_t *p_destination)
 {
-    const char *str = p_source->ptr;
-
-    size_t source_length = p_source->len;
-
-    size_t buffer_size = source_length + 1;
-
+    size_t buffer_size = p_source->len + 1;
     char *buffer = malloc(buffer_size);
 
-    strncpy(buffer, str, buffer_size);
+    strncpy(buffer, p_source->ptr, buffer_size);
 
     p_destination->ptr = buffer;
-    p_destination->len = source_length;
+    p_destination->len = p_source->len;
 }
