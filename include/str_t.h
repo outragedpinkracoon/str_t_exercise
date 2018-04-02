@@ -32,6 +32,9 @@ void str_move(str_t* p_source, str_t* p_destination);
 // Operators
 str_t str_concat(const str_t* p_left, const str_t* p_right);
 
+// Hygiene
+bool str_is_empty(const char* ptr);
+
 // TODO remove this - was used to prove compilation works
 const char *hello(void);
 
