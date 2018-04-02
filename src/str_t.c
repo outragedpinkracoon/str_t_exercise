@@ -52,3 +52,30 @@ void str_move(str_t *p_source, str_t *p_destination)
     p_source->ptr = NULL;
     p_source->len = 0;
 }
+
+str_t str_concat(const str_t *p_left, const str_t *p_right)
+{
+    str_t result;
+
+    size_t result_length = p_left->len + p_right->len;
+
+    result.ptr = malloc(result_length + 1);
+
+    char* iterator = (char*) result.ptr;
+
+    for (size_t i = 0; i < p_left->len; i++) {
+        *iterator = p_left->ptr[i];
+        iterator++;
+    }
+
+    for (size_t j = 0; j < p_right->len; j++)
+    {
+        *iterator = p_right->ptr[j];
+        iterator++;
+    }
+    *iterator = '\0';
+
+    result.len = result_length;
+
+    return result;
+}
