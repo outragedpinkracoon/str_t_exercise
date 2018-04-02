@@ -16,8 +16,8 @@ typedef enum {
 } str_err_t;
 
 // Creating
-str_t* str_new_from_raw_parts(const char* ptr, size_t len);
-str_t* str_new_from_zero_terminated(const char* ptr);
+void str_new_from_raw_parts(str_t *output, const char *ptr, size_t len);
+void str_new_from_zero_terminated(str_t *output, const char *ptr);
 
 // Safely destroying
 void str_free(str_t* p_str);
