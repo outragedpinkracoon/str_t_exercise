@@ -43,3 +43,12 @@ void str_copy(const str_t *p_source, str_t *p_destination)
     p_destination->ptr = buffer;
     p_destination->len = p_source->len;
 }
+
+void str_move(str_t *p_source, str_t *p_destination)
+{
+    p_destination->ptr = p_source->ptr;
+    p_destination->len = p_source->len;
+
+    p_source->ptr = NULL;
+    p_source->len = 0;
+}
