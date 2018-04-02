@@ -49,6 +49,20 @@ void test_str_copy(void)
   str_free(&output);
 }
 
+void test_str_move(void)
+{
+  str_t input;
+  str_new_from_zero_terminated(&input, "Apple");
+  str_t output;
+  str_move(&input, &output);
+  TEST_ASSERT_EQUAL_STRING("Apple", output.ptr);
+  TEST_ASSERT_EQUAL_UINT(5, output.len);
+  TEST_ASSERT_NULL(input.ptr);
+  TEST_ASSERT_EQUAL_UINT(0, input.len);
+  str_free(&input);
+  str_free(&output);
+}
+
 int main(void)
 {
    UnityBegin("tests/test_str_t.c");
@@ -57,6 +71,7 @@ int main(void)
    RUN_TEST(test_str_new_from_raw_parts);
    RUN_TEST(test_str_new_from_zero_terminated);
    RUN_TEST(test_str_copy);
+   RUN_TEST(test_str_move);
 
    UnityEnd();
 

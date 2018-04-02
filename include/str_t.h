@@ -27,7 +27,7 @@ str_err_t str_copy_to_zero_terminated(const str_t* p_source, char* p_destination
 
 // Assignment
 void str_copy(const str_t* p_source, str_t* p_destination);
-void str_move(const str_t* p_source, str_t* p_destination);
+void str_move(str_t* p_source, str_t* p_destination);
 
 // Operators
 str_t* str_concat(const str_t* p_str, str_t* p_other);
