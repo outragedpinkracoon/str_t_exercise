@@ -3,13 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-const char * const message = "Hello, World!";
-
-const char *hello(void)
-{
-    return message;
-}
-
 void str_new_from_raw_parts(str_t *output, const char* ptr, size_t len)
 {
     size_t buffer_size = len + 1;
