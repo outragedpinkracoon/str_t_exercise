@@ -37,6 +37,15 @@ void test_str_new_from_zero_terminated(void)
   str_free(&output);
 }
 
+void test_str_free(void)
+{
+  str_t str;
+  str_new_from_zero_terminated(&str, "Anything");
+  str_free(&str);
+  TEST_ASSERT_NULL(str.ptr);
+  TEST_ASSERT_EQUAL_UINT(0, str.len);
+}
+
 void test_str_copy(void)
 {
   str_t input;
@@ -84,6 +93,7 @@ int main(void)
    RUN_TEST(test_hello);
    RUN_TEST(test_str_new_from_raw_parts);
    RUN_TEST(test_str_new_from_zero_terminated);
+   RUN_TEST(test_str_free);
    RUN_TEST(test_str_copy);
    RUN_TEST(test_str_move);
    RUN_TEST(test_str_concat);
