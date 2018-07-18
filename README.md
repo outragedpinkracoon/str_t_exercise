@@ -14,6 +14,13 @@ Remember to ask yourself: what parts of the code should "own" and thus free any 
 
 You MAY change the signatures in the header if you need to.
 
+# Learning outcomes
+
+* Understand how low level C's string handling is
+* Understand roughtly how higher-level languages (implemented in C) might wrap low level C strings to add some safety
+* Understand the tricky problem of memory ownership
+* Understand how easy it is to forget to free memory you have allocated
+
 # Usage
 
 Build and run the tests:
