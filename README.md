@@ -8,7 +8,11 @@ To build a simple wrapper around native C strings.
 
 The header in `include/str_t.h` declares signatures for the functions you need to implement.
 
-The tests in `tests/test_str_t.c` specify how the functions should behave.
+Add test to `tests/test_str_t.c` to specify how the functions should behave.
+
+Remember to ask yourself: what parts of the code should "own" and thus free any memory you allocate?
+
+You MAY change the signatures in the header if you need to.
 
 # Usage
 
