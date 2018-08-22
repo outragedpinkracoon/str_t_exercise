@@ -20,7 +20,7 @@ You MAY change the signatures in the header if you need to.
 
 Understand:
 
-* how low level C's string handling is
+* how low-level C's string handling is
 * how higher-level languages (possibly implemented in C) might wrap low level C strings to add some safety
 * the tricky problem of memory ownership and when/where to free allocated memory
 * how easy it is to forget to free memory you have allocated
@@ -44,4 +44,20 @@ Clean build outputs and remove downloaded dependencies:
 
 ```
 $ make clobber
+```
+
+To run the memory error detector. Install [valgrind](http://valgrind.org/):
+
+```sh
+# First time only (Mac)
+$ brew install valgrind
+
+# First time only (Ubuntu/Debian)
+$ sudo apt-get install valgrind
+```
+
+From then on ...
+
+```
+$ make memcheck
 ```
