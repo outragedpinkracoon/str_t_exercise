@@ -70,9 +70,14 @@ void str_move(const str_t* p_source, str_t* p_destination);
 // Operators
 
 /*
- * Return a new str_t that is the concatination of p_str and p_other.
+ * Return a new str_t that it is the concatination of p_str and p_other.
  */
 str_t* str_concat(const str_t* p_str, str_t* p_other);
+
+/*
+ * Mutate p_str so that it is the concatination of p_str and p_other.
+ */
+void str_extend(const str_t* p_str, str_t* p_other);
 
 // ------------------------------------------------------------------------------------------------
 // TODO remove this - was used to prove compilation works
