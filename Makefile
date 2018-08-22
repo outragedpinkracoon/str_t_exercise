@@ -11,6 +11,7 @@ VFLAGS  = --quiet
 VFLAGS += --tool=memcheck
 VFLAGS += --leak-check=full
 VFLAGS += --error-exitcode=1
+VFLAGS += --suppressions=memcheck-suppressions.supp
 
 test: tests.out
 	@./tests.out
