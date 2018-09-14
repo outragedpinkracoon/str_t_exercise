@@ -80,7 +80,5 @@ str_t* str_concat(const str_t* p_str, str_t* p_other);
 void str_extend(const str_t* p_str, str_t* p_other);
 
 // ------------------------------------------------------------------------------------------------
-// TODO remove this - was used to prove compilation works
-const char *hello(void);
 
 #endif
