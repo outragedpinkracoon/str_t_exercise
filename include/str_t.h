@@ -3,6 +3,8 @@
 
 #include <stddef.h>
 
+extern size_t BYTES_ASSIGNED;
+
 // Structure that will hold our string
 typedef struct str {
   const char* ptr;
