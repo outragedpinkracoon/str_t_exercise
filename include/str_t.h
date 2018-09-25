@@ -38,7 +38,7 @@ str_t* str_new_from_zero_terminated(const char* ptr);
  *
  * Frees any memory allocated. After calling this the pointer must not be used.
  */
-void str_free(str_t* p_str);
+void str_free(str_t* *p_str);
 
 // ------------------------------------------------------------------------------------------------
 // Moving out
