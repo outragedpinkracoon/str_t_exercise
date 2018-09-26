@@ -7,9 +7,10 @@ size_t BYTES_ASSIGNED = 0;
 
 str_t* str_new_from_raw_parts(const char* ptr, size_t len) {
   size_t size = sizeof(str_t);
-  printf("allocated: %lu \n", size);
   str_t* p = malloc(size);
+
   BYTES_ASSIGNED += size;
+
   p->len = len;
   p->ptr = ptr;
 
@@ -21,7 +22,8 @@ str_t* str_new_from_zero_terminated(const char* ptr) {
 }
 
 void str_free(str_t* *p_str) {
-  BYTES_ASSIGNED -= sizeof(*p_str) + 8;
+  BYTES_ASSIGNED -= sizeof(**p_str);
+
   free(*p_str);
   *p_str = NULL;
 }

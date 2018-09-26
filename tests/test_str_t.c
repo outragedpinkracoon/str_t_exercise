@@ -28,11 +28,9 @@ void test_str_free(void)
 {
   str_t* input = str_new_from_raw_parts("hullo", 5);
   TEST_ASSERT_EQUAL(16, BYTES_ASSIGNED);
-  printf("size of struct: %lu \n", sizeof(input));
-  printf("size of input len: %lu \n", sizeof(input->len));
-  printf("size of input ptr %lu \n", sizeof(input->ptr));
 
   str_free(&input);
+
   TEST_ASSERT_EQUAL(0, BYTES_ASSIGNED);
   TEST_ASSERT_NULL(input);
 }
