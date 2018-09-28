@@ -28,7 +28,7 @@ clobber: clean
 
 tests.out: tests/test_str_t.c src/str_t.c include/str_t.h tests/vendor/src/unity.c
 	@echo Compiling $@
-	@cc $(CFLAGS) src/str_t.c tests/vendor/src/unity.c tests/test_str_t.c -o tests.out
+	@cc $(CFLAGS) src/str_t.c tests/vendor/src/unity.c tests/test_str_t.c -o tests.out -Wno-unused-parameter
 
 tests/vendor/src/unity.c:
 	cd tests; \

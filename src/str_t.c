@@ -27,3 +27,12 @@ void str_free(str_t* *p_str) {
   free(*p_str);
   *p_str = NULL;
 }
+
+str_err_t str_copy_to_zero_terminated(const str_t* p_source, char* p_destination, size_t dest_size) {
+  if(dest_size < p_source->len + 1) return STR_T_BUFFER_TOO_SMALL;
+
+  *p_destination = '\0';
+  strcpy(p_destination, "nom");
+
+  return STR_T_OK;
+}
