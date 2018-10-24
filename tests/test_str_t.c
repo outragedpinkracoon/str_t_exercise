@@ -15,7 +15,7 @@ void test_str_new_from_raw_parts(void)
   char* input = "hullo pal";
   str_t* result = str_new_from_raw_parts(input, 9);
   TEST_ASSERT_EQUAL_INT(result->len, 9);
-  TEST_ASSERT_EQUAL_PTR(result->ptr, "hullo pal");
+  TEST_ASSERT_EQUAL_STRING(result->ptr, input);
 }
 
 void test_str_new_from_zero_terminated(void)
@@ -23,7 +23,7 @@ void test_str_new_from_zero_terminated(void)
   char* input = "hullo pal";
   str_t* result = str_new_from_zero_terminated(input);
   TEST_ASSERT_EQUAL_INT(result->len, 9);
-  TEST_ASSERT_EQUAL_PTR(result->ptr, input);
+  TEST_ASSERT_EQUAL_STRING(result->ptr, input);
 }
 
 void test_str_free(void)
@@ -67,6 +67,17 @@ void test_str_copy_to_zero_terminated_failure_less_than(void) {
   TEST_ASSERT_EQUAL(error, STR_T_BUFFER_TOO_SMALL);
 }
 
+void test_str_copy(void) {
+  str_t* input1 = str_new_from_raw_parts("october", 7);
+  str_t* input2 = str_new_from_raw_parts("december", 8);
+  str_copy(input1, input2);
+
+  TEST_ASSERT_EQUAL_STRING(input1->ptr, "october");
+  TEST_ASSERT_EQUAL_STRING(input2->ptr, "october");
+  TEST_ASSERT_EQUAL_INT(input2->len, 7);
+  TEST_ASSERT_NOT_EQUAL(input2->ptr, input1->ptr);
+}
+
 int main(void)
 {
    UnityBegin("tests/test_str_t.c");
@@ -77,6 +88,7 @@ int main(void)
    RUN_TEST(test_str_copy_to_zero_terminated_success_equal_to);
    RUN_TEST(test_str_copy_to_zero_terminated_success_more_than);
    RUN_TEST(test_str_copy_to_zero_terminated_failure_less_than);
+   RUN_TEST(test_str_copy);
 
    UnityEnd();
 
