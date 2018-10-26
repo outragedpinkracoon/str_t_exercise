@@ -14,16 +14,16 @@ void test_str_new_from_raw_parts(void)
 {
   char* input = "hullo pal";
   str_t* result = str_new_from_raw_parts(input, 9);
-  TEST_ASSERT_EQUAL_INT(result->len, 9);
-  TEST_ASSERT_EQUAL_STRING(result->ptr, input);
+  TEST_ASSERT_EQUAL_INT(9, result->len);
+  TEST_ASSERT_EQUAL_STRING(input, result->ptr);
 }
 
 void test_str_new_from_zero_terminated(void)
 {
   char* input = "hullo pal";
   str_t* result = str_new_from_zero_terminated(input);
-  TEST_ASSERT_EQUAL_INT(result->len, 9);
-  TEST_ASSERT_EQUAL_STRING(result->ptr, input);
+  TEST_ASSERT_EQUAL_INT(9, result->len);
+  TEST_ASSERT_EQUAL_STRING(input, result->ptr);
 }
 
 void test_str_free(void)
@@ -44,8 +44,8 @@ void test_str_copy_to_zero_terminated_success_equal_to(void) {
   char* p = malloc(size_needed);
 
   str_err_t error = str_copy_to_zero_terminated(input, p, size_needed);
-  TEST_ASSERT_EQUAL_STRING(p, "nom");
-  TEST_ASSERT_EQUAL(error, STR_T_OK);
+  TEST_ASSERT_EQUAL_STRING("nom", p);
+  TEST_ASSERT_EQUAL(STR_T_OK, error);
 }
 
 void test_str_copy_to_zero_terminated_success_more_than(void) {
@@ -55,8 +55,8 @@ void test_str_copy_to_zero_terminated_success_more_than(void) {
   char* p = malloc(size_needed);
 
   str_err_t error = str_copy_to_zero_terminated(input, p, 5);
-  TEST_ASSERT_EQUAL_STRING(p, "nom");
-  TEST_ASSERT_EQUAL(error, STR_T_OK);
+  TEST_ASSERT_EQUAL_STRING("nom", p);
+  TEST_ASSERT_EQUAL(STR_T_OK, error);
 }
 
 void test_str_copy_to_zero_terminated_failure_less_than(void) {
@@ -72,9 +72,9 @@ void test_str_copy(void) {
   str_t* input2 = str_new_from_raw_parts("december", 8);
   str_copy(input1, input2);
 
-  TEST_ASSERT_EQUAL_STRING(input1->ptr, "october");
-  TEST_ASSERT_EQUAL_STRING(input2->ptr, "october");
-  TEST_ASSERT_EQUAL_INT(input2->len, 7);
+  TEST_ASSERT_EQUAL_STRING("october", input1->ptr);
+  TEST_ASSERT_EQUAL_STRING("october", input2->ptr);
+  TEST_ASSERT_EQUAL_INT(7, input2->len);
   TEST_ASSERT_NOT_EQUAL(input2->ptr, input1->ptr);
 }
 
