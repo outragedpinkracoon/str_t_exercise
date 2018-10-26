@@ -11,8 +11,7 @@ str_t* str_new_from_raw_parts(const char* ptr, size_t len) {
 
   BYTES_ASSIGNED += size;
 
-  //allocate the size of the ptr plus 1 for the null terminator
-  char* copy = malloc(sizeof(char) * (len + 1));
+  char* copy = malloc(len + 1);
   strcpy(copy, ptr);
 
   p->len = len;
@@ -41,12 +40,9 @@ str_err_t str_copy_to_zero_terminated(const str_t* p_source, char* p_destination
 }
 
 void str_copy(const str_t* p_source, str_t* p_destination) {
-  //make some space for the copy of the p_source string
-  char* copy = malloc(sizeof(char) * (strlen(p_source->ptr) + 1));
+  char* copy = malloc((strlen(p_source->ptr) + 1));
   strcpy(copy, p_source->ptr);
 
   p_destination->ptr = copy;
   p_destination->len = p_source->len;
 }
-
-//TODO: Move away from using the '\0' at the end and the str_ functions
