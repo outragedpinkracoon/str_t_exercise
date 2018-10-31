@@ -1,6 +1,7 @@
 #ifndef STR_T_H
 #define STR_T_H
 
+#include <stdbool.h>
 #include <stddef.h>
 
 extern size_t BYTES_ASSIGNED;
@@ -82,5 +83,8 @@ str_t* str_concat(const str_t* p_str, str_t* p_other);
 void str_extend(const str_t* p_str, str_t* p_other);
 
 // ------------------------------------------------------------------------------------------------
+
+// Compare two str_t for equality
+bool str_compare(const str_t* left, const str_t* right);
 
 #endif
