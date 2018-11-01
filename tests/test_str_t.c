@@ -73,6 +73,8 @@ void test_str_copy(void) {
   str_copy(input1, input2);
 
   TEST_ASSERT_TRUE(str_compare(input1, input2));
+  //This is the failing test
+  TEST_ASSERT_EQUAL_STRING("october", input2->ptr);
 }
 
 void test_str_compare_equal_ptr_len(void) {
@@ -107,17 +109,17 @@ int main(void)
 {
    UnityBegin("tests/test_str_t.c");
 
-   RUN_TEST(test_str_new_from_raw_parts);
-   RUN_TEST(test_str_new_from_zero_terminated);
-   RUN_TEST(test_str_free);
-   RUN_TEST(test_str_copy_to_zero_terminated_success_equal_to);
-   RUN_TEST(test_str_copy_to_zero_terminated_success_more_than);
-   RUN_TEST(test_str_copy_to_zero_terminated_failure_less_than);
+  //  RUN_TEST(test_str_new_from_raw_parts);
+  //  RUN_TEST(test_str_new_from_zero_terminated);
+  //  RUN_TEST(test_str_free);
+  //  RUN_TEST(test_str_copy_to_zero_terminated_success_equal_to);
+  //  RUN_TEST(test_str_copy_to_zero_terminated_success_more_than);
+  //  RUN_TEST(test_str_copy_to_zero_terminated_failure_less_than);
    RUN_TEST(test_str_copy);
-   RUN_TEST(test_str_compare_equal_ptr_len);
-   RUN_TEST(test_str_compare_equal_ptr);
-   RUN_TEST(test_str_compare_not_equal_ptr_len);
-   RUN_TEST(test_str_compare_not_equal_ptr);
+  //  RUN_TEST(test_str_compare_equal_ptr_len);
+  //  RUN_TEST(test_str_compare_equal_ptr);
+  //  RUN_TEST(test_str_compare_not_equal_ptr_len);
+  //  RUN_TEST(test_str_compare_not_equal_ptr);
 
    UnityEnd();
 
